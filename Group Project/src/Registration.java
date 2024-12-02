@@ -94,19 +94,19 @@ public class Registration extends JFrame {
                 "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
                 "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"
         };
-        JComboBox courseCombo = new JComboBox(days);
-        courseCombo.setSize(50, 20);
-        courseCombo.setLocation(250, 255);
-        add(courseCombo);
+        JComboBox dayCombo = new JComboBox(days);
+        dayCombo.setSize(50, 20);
+        dayCombo.setLocation(250, 255);
+        add(dayCombo);
 
         String[] months = {
                 "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
                 "Nov", "Dec"
         };
-        JComboBox courseCombo1 = new JComboBox(months);
-        courseCombo1.setSize(80, 20);
-        courseCombo1.setLocation(300, 255);
-        add(courseCombo1);
+        JComboBox monthCombo = new JComboBox(months);
+        monthCombo.setSize(80, 20);
+        monthCombo.setLocation(300, 255);
+        add(monthCombo);
 
         String[] years = {
                 "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015",
@@ -114,10 +114,25 @@ public class Registration extends JFrame {
                 "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995",
                 "1994", "1993", "1992", "1991", "1990"
         };
-        JComboBox courseCombo2 = new JComboBox(years);
-        courseCombo2.setSize(100, 20);
-        courseCombo2.setLocation(380, 255);
-        add(courseCombo2);
+        JComboBox yearCombo = new JComboBox(years);
+        yearCombo.setSize(100, 20);
+        yearCombo.setLocation(380, 255);
+        add(yearCombo);
+
+        monthCombo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateDays(dayCombo, monthCombo.getSelectedIndex(), Integer.parseInt((String) yearCombo.getSelectedItem()));
+            }
+        });
+
+        yearCombo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateDays(dayCombo, monthCombo.getSelectedIndex(), Integer.parseInt((String) yearCombo.getSelectedItem()));
+            }
+        });
+
 
 // Address
 
@@ -167,9 +182,9 @@ public class Registration extends JFrame {
                 nameTextField.setText("");
                 mobileTextField.setText("");
                 male.setSelected(true);
-                courseCombo.setSelectedIndex(0);
-                courseCombo1.setSelectedIndex(0);
-                courseCombo2.setSelectedIndex(0);
+                dayCombo.setSelectedIndex(0);
+                monthCombo.setSelectedIndex(0);
+                yearCombo.setSelectedIndex(0);
                 AddressText.setText("");
                 checkBox.setSelected(false);
                 confirmationText.setText("");
@@ -190,19 +205,19 @@ public class Registration extends JFrame {
                 String name = nameTextField.getText();
                 String mobile = mobileTextField.getText();
                 String gender = male.isSelected() ? "Male" : female.isSelected() ? "Female" : "Not selected";
-                String birthday = courseCombo.getSelectedItem() + " " + courseCombo1.getSelectedItem() + " " + courseCombo2.getSelectedItem();
+                String birthday = dayCombo.getSelectedItem() + " " + monthCombo.getSelectedItem() + " " + yearCombo.getSelectedItem();
                 String address = AddressText.getText();
                 String terms = checkBox.isSelected() ? "Accepted" : "Not Accepted";
 
-                // Check if the name is equal to "Admin"
-                if (name.equals("Admin")) {
+
+                if (!mobile.matches("\\d+")) {
                     JOptionPane.showMessageDialog(
                             null,
-                            "The name cannot be 'Admin'. Please enter a different name.",
+                            "Mobile number cannot contain letters. Please enter only digits.",
                             "Invalid Input",
                             JOptionPane.ERROR_MESSAGE
                     );
-                    return; // Exit the action listener
+                    return;
                 }
 
                 // Validate mobile number length
@@ -227,4 +242,38 @@ public class Registration extends JFrame {
             }
         });
     }
-}
+        private void updateDays (JComboBox < String > dayCombo,int monthIndex, int year){
+            int daysInMonth;
+
+            switch (monthIndex) {
+                case 1: // February
+                    daysInMonth = isLeapYear(year) ? 29 : 28;
+                    break;
+                case 3:
+                case 5:
+                case 8:
+                case 10: // April, June, September, November
+                    daysInMonth = 30;
+                    break;
+                default: // Other months
+                    daysInMonth = 31;
+                    break;
+            }
+
+            dayCombo.removeAllItems();
+            for (int i = 1; i <= daysInMonth; i++) {
+                dayCombo.addItem(String.valueOf(i));
+            }
+        }
+
+        private boolean isLeapYear ( int year){
+            return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+        }
+
+        public static void main (String[]args){
+            Registration frame = new Registration();
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        }
+    }
