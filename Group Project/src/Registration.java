@@ -193,6 +193,7 @@ public class Registration extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 if (!checkBox.isSelected()) {
                     JOptionPane.showMessageDialog(
                             null,
@@ -209,7 +210,35 @@ public class Registration extends JFrame {
                 String address = AddressText.getText();
                 String terms = checkBox.isSelected() ? "Accepted" : "Not Accepted";
 
+                if (name.isEmpty()) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Name field cannot be empty!",
+                            "Invalid Input",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    return; // Exit the action listener
+                }
 
+                if (mobile.isEmpty()) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Mobile field cannot be empty!",
+                            "Invalid Input",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    return; // Exit the action listener
+                }
+
+                if (address.isEmpty()) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Address field cannot be empty!",
+                            "Invalid Input",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    return; // Exit the action listener
+                }
                 if (!mobile.matches("\\d+")) {
                     JOptionPane.showMessageDialog(
                             null,
