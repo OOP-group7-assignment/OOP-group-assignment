@@ -201,7 +201,7 @@ public class Registration extends JFrame {
                             "Terms Not Accepted",
                             JOptionPane.ERROR_MESSAGE
                     );
-                    return; // Exit the action listener without assigning values to variables
+                    return;
                 }
                 String name = nameTextField.getText();
                 String mobile = mobileTextField.getText();
@@ -217,7 +217,7 @@ public class Registration extends JFrame {
                             "Invalid Input",
                             JOptionPane.ERROR_MESSAGE
                     );
-                    return; // Exit the action listener
+                    return;
                 }
 
                 if (mobile.isEmpty()) {
@@ -227,7 +227,7 @@ public class Registration extends JFrame {
                             "Invalid Input",
                             JOptionPane.ERROR_MESSAGE
                     );
-                    return; // Exit the action listener
+                    return;
                 }
 
                 if (address.isEmpty()) {
@@ -237,7 +237,7 @@ public class Registration extends JFrame {
                             "Invalid Input",
                             JOptionPane.ERROR_MESSAGE
                     );
-                    return; // Exit the action listener
+                    return;
                 }
                 if (!mobile.matches("\\d+")) {
                     JOptionPane.showMessageDialog(
@@ -250,23 +250,23 @@ public class Registration extends JFrame {
                 }
 
                 // Validate mobile number length
-                if (mobile.length() != 10) { // Change 10 to the required length
+                if (mobile.length() != 10) {
                     JOptionPane.showMessageDialog(
                             null,
                             "Mobile number must be exactly 10 digits!",
                             "Invalid Input",
                             JOptionPane.ERROR_MESSAGE
                     );
-                    return; // Exit the action listener
+                    return;
                 }
 
-                // Format and display the output if validation passes
+
                 String output = String.format(
                         "Name: %s\nMobile: %s\nGender: %s\nBirthday: %s\nAddress: %s\nTerms: %s",
                         name, mobile, gender, birthday, address, terms
                 );
 
-                // Display the output in the confirmation text area
+
                 confirmationText.setText(output);
             }
         });
@@ -281,10 +281,10 @@ public class Registration extends JFrame {
                 case 3:
                 case 5:
                 case 8:
-                case 10: // April, June, September, November
+                case 10:
                     daysInMonth = 30;
                     break;
-                default: // Other months
+                default:
                     daysInMonth = 31;
                     break;
             }
