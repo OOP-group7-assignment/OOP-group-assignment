@@ -5,7 +5,8 @@ import java.awt.event.ActionListener;
 //Removed the reset button action listener
 //Removed right side text area
 //Changed the layout. now it has a sign in and a sign up button
-//Need to add a correct verfication code to email field
+//Need to add a correct verfication code to email field. This would vary with the saved password and username of inputs of users
+
 
 public class Registration extends JFrame {
     private final int FRAME_WIDTH = 700;
