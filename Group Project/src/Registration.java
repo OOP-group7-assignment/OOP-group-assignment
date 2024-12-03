@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Registration extends JFrame {
-    private final int FRAME_WIDTH = 1000;
+    private final int FRAME_WIDTH = 700;
     private final int FRAME_HEIGHT = 880;
     private final int FRAME_X = 680;
     private final int FRAME_Y = 150;
@@ -20,9 +20,9 @@ public class Registration extends JFrame {
 
         //Registration Form
 
-        JLabel titleLable = new JLabel("Registration Form");
+        JLabel titleLable = new JLabel("SIGN UP");
         titleLable.setSize(350, 50);
-        titleLable.setLocation(380, 20);
+        titleLable.setLocation(310, 20);
         titleLable.setFont(new Font("Arial", Font.BOLD, 25));
         contentPane.add(titleLable);
 
@@ -40,19 +40,19 @@ public class Registration extends JFrame {
         nameTextField.setFont(new Font("Arial", Font.PLAIN, 20));
         contentPane.add(nameTextField);
 
-        //mobile
+        //email
 
-        JLabel mobileLable = new JLabel("Mobile");
-        mobileLable.setSize(100, 30);
-        mobileLable.setLocation(150, 150);
-        mobileLable.setFont(new Font("Arial", Font.PLAIN, 20));
-        contentPane.add(mobileLable);
+        JLabel emailLable = new JLabel("Email");
+        emailLable.setSize(100, 30);
+        emailLable.setLocation(150, 150);
+        emailLable.setFont(new Font("Arial", Font.PLAIN, 20));
+        contentPane.add(emailLable);
 
-        JTextField mobileTextField = new JTextField();
-        mobileTextField.setSize(250, 30);
-        mobileTextField.setLocation(250, 150);
-        mobileTextField.setFont(new Font("Arial", Font.PLAIN, 20));
-        contentPane.add(mobileTextField);
+        JTextField emailLableTextField = new JTextField();
+        emailLableTextField.setSize(250, 30);
+        emailLableTextField.setLocation(250, 150);
+        emailLableTextField.setFont(new Font("Arial", Font.PLAIN, 20));
+        contentPane.add(emailLableTextField);
 
 
         // gender
@@ -134,63 +134,90 @@ public class Registration extends JFrame {
         });
 
 
-// Address
+// password
 
-        JLabel AddressLable = new JLabel("Address");
-        AddressLable.setSize(100, 30);
-        AddressLable.setLocation(150, 300);
-        AddressLable.setFont(new Font("Arial", Font.PLAIN, 20));
-        contentPane.add(AddressLable);
+        JLabel passwordLable = new JLabel("Password");
+        passwordLable.setSize(100, 30);
+        passwordLable.setLocation(150, 300);
+        passwordLable.setFont(new Font("Arial", Font.PLAIN, 20));
+        contentPane.add(passwordLable);
 
-        JTextArea AddressText = new JTextArea();
-        AddressText.setFont(new Font("Arial", Font.PLAIN, 15));
-        AddressText.setSize(250, 200);
-        AddressText.setLocation(250, 300);
-        AddressText.setLineWrap(true);
-        contentPane.add(AddressText);
+        JTextField passwordText = new JTextField();
+        passwordText.setFont(new Font("Arial", Font.PLAIN, 15));
+        passwordText.setSize(250, 30);
+        passwordText.setLocation(250, 300);
+        contentPane.add(passwordText);
 
         //Verify the consent
-        JCheckBox checkBox = new JCheckBox("Accept Terms and conditions.");
+        JCheckBox checkBox = new JCheckBox("I am not a ROBOT.");
         checkBox.setFont(new Font("Arial", Font.PLAIN, 15));
         checkBox.setSize(250, 20);
-        checkBox.setLocation(220, 550);
+        checkBox.setLocation(220, 350);
         contentPane.add(checkBox);
 
-        JButton submitButton = new JButton("Submit");
-        submitButton.setFont(new Font("Arial", Font.PLAIN, 15));
-        submitButton.setSize(100, 20);
-        submitButton.setLocation(250, 600);
-        contentPane.add(submitButton);
+        JButton signupButton = new JButton("Signup");
+        signupButton.setFont(new Font("Arial", Font.PLAIN, 20));
+        signupButton.setSize(200, 40);
+        signupButton.setLocation(250, 400);
+        contentPane.add(signupButton);
 
-        JButton ResetButton = new JButton("Reset");
-        ResetButton.setFont(new Font("Arial", Font.PLAIN, 15));
-        ResetButton.setSize(100, 20);
-        ResetButton.setLocation(400, 600);
+        JLabel titleLable1 = new JLabel("SIGN IN");
+        titleLable1.setSize(350, 50);
+        titleLable1.setLocation(310, 480);
+        titleLable1.setFont(new Font("Arial", Font.BOLD, 25));
+        contentPane.add(titleLable1);
+
+        //email-sign-in
+
+        JLabel nameLable1 = new JLabel("Email");
+        nameLable1.setSize(100, 30);
+        nameLable1.setLocation(150, 530);
+        nameLable1.setFont(new Font("Arial", Font.PLAIN, 20));
+        contentPane.add(nameLable1);
+
+        JTextField nameTextField1 = new JTextField();
+        nameTextField1.setSize(250, 30);
+        nameTextField1.setLocation(250, 530);
+        nameTextField1.setFont(new Font("Arial", Font.PLAIN, 20));
+        contentPane.add(nameTextField1);
+
+        //password-sign-in
+
+        JLabel passwordLable1 = new JLabel("Password");
+        passwordLable1.setSize(100, 30);
+        passwordLable1.setLocation(150, 580);
+        passwordLable1.setFont(new Font("Arial", Font.PLAIN, 20));
+        contentPane.add(passwordLable1);
+
+        JTextField passwordLableTextField1 = new JTextField();
+        passwordLableTextField1.setSize(250, 30);
+        passwordLableTextField1.setLocation(250, 580);
+        passwordLableTextField1.setFont(new Font("Arial", Font.PLAIN, 20));
+        contentPane.add(passwordLableTextField1);
+
+        JButton ResetButton = new JButton("Sign in");
+        ResetButton.setFont(new Font("Arial", Font.PLAIN, 20));
+        ResetButton.setSize(200, 40);
+        ResetButton.setLocation(250, 630);
         contentPane.add(ResetButton);
 
-        JTextArea confirmationText = new JTextArea();
-        confirmationText.setFont(new Font("Arial", Font.PLAIN, 15));
-        confirmationText.setSize(400, 600);
-        confirmationText.setLocation(550, 100);
-        confirmationText.setLineWrap(true);
-        contentPane.add(confirmationText);
 
 
         ResetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 nameTextField.setText("");
-                mobileTextField.setText("");
+                emailLableTextField.setText("");
                 male.setSelected(true);
                 dayCombo.setSelectedIndex(0);
                 monthCombo.setSelectedIndex(0);
                 yearCombo.setSelectedIndex(0);
-                AddressText.setText("");
+                passwordText.setText("");
                 checkBox.setSelected(false);
-                confirmationText.setText("");
+
             }
         });
-        submitButton.addActionListener(new ActionListener() {
+        signupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -204,10 +231,10 @@ public class Registration extends JFrame {
                     return;
                 }
                 String name = nameTextField.getText();
-                String mobile = mobileTextField.getText();
+                String email = emailLableTextField.getText();
                 String gender = male.isSelected() ? "Male" : female.isSelected() ? "Female" : "Not selected";
                 String birthday = dayCombo.getSelectedItem() + " " + monthCombo.getSelectedItem() + " " + yearCombo.getSelectedItem();
-                String address = AddressText.getText();
+                String address = passwordText.getText();
                 String terms = checkBox.isSelected() ? "Accepted" : "Not Accepted";
 
                 if (name.isEmpty()) {
@@ -220,7 +247,7 @@ public class Registration extends JFrame {
                     return;
                 }
 
-                if (mobile.isEmpty()) {
+                if (email.isEmpty()) {
                     JOptionPane.showMessageDialog(
                             null,
                             "Mobile field cannot be empty!",
@@ -239,7 +266,7 @@ public class Registration extends JFrame {
                     );
                     return;
                 }
-                if (!mobile.matches("\\d+")) {
+                if (!email.matches("\\d+")) {
                     JOptionPane.showMessageDialog(
                             null,
                             "Mobile number cannot contain letters. Please enter only digits.",
@@ -250,7 +277,7 @@ public class Registration extends JFrame {
                 }
 
                 // Validate mobile number length
-                if (mobile.length() != 10) {
+                if (email.length() != 10) {
                     JOptionPane.showMessageDialog(
                             null,
                             "Mobile number must be exactly 10 digits!",
@@ -263,11 +290,9 @@ public class Registration extends JFrame {
 
                 String output = String.format(
                         "Name: %s\nMobile: %s\nGender: %s\nBirthday: %s\nAddress: %s\nTerms: %s",
-                        name, mobile, gender, birthday, address, terms
+                        name, email, gender, birthday, address, terms
                 );
 
-
-                confirmationText.setText(output);
             }
         });
     }
