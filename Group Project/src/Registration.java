@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//Removed the reset button action listener
+//Removed right side text area
+//Changed the layout. now it has a sign in and a sign up button
+//Need to add a correct verfication code to email field
 
 public class Registration extends JFrame {
     private final int FRAME_WIDTH = 700;
@@ -203,20 +207,20 @@ public class Registration extends JFrame {
 
 
 
-        ResetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                nameTextField.setText("");
-                emailLableTextField.setText("");
-                male.setSelected(true);
-                dayCombo.setSelectedIndex(0);
-                monthCombo.setSelectedIndex(0);
-                yearCombo.setSelectedIndex(0);
-                passwordText.setText("");
-                checkBox.setSelected(false);
+        //ResetButton.addActionListener(new ActionListener() {
+         //   @Override
+         //   public void actionPerformed(ActionEvent e) {
+        //        nameTextField.setText("");
+         //       emailLableTextField.setText("");
+          //      male.setSelected(true);
+          //      dayCombo.setSelectedIndex(0);
+         //       monthCombo.setSelectedIndex(0);
+         //       yearCombo.setSelectedIndex(0);
+         //       passwordText.setText("");
+          //      checkBox.setSelected(false);
 
-            }
-        });
+        //    }
+       // });
         signupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -234,7 +238,7 @@ public class Registration extends JFrame {
                 String email = emailLableTextField.getText();
                 String gender = male.isSelected() ? "Male" : female.isSelected() ? "Female" : "Not selected";
                 String birthday = dayCombo.getSelectedItem() + " " + monthCombo.getSelectedItem() + " " + yearCombo.getSelectedItem();
-                String address = passwordText.getText();
+                String password = passwordText.getText();
                 String terms = checkBox.isSelected() ? "Accepted" : "Not Accepted";
 
                 if (name.isEmpty()) {
@@ -257,41 +261,31 @@ public class Registration extends JFrame {
                     return;
                 }
 
-                if (address.isEmpty()) {
+                if (password.isEmpty()) {
                     JOptionPane.showMessageDialog(
                             null,
-                            "Address field cannot be empty!",
+                            "Password cannot be empty!",
                             "Invalid Input",
                             JOptionPane.ERROR_MESSAGE
                     );
                     return;
                 }
+
+                // Email Verification should be configured properly
                 if (!email.matches("\\d+")) {
                     JOptionPane.showMessageDialog(
                             null,
-                            "Mobile number cannot contain letters. Please enter only digits.",
+                            "Email Should be in the correct format",
                             "Invalid Input",
                             JOptionPane.ERROR_MESSAGE
                     );
                     return;
                 }
 
-                // Validate mobile number length
-                if (email.length() != 10) {
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "Mobile number must be exactly 10 digits!",
-                            "Invalid Input",
-                            JOptionPane.ERROR_MESSAGE
-                    );
-                    return;
-                }
-
-
-                String output = String.format(
-                        "Name: %s\nMobile: %s\nGender: %s\nBirthday: %s\nAddress: %s\nTerms: %s",
-                        name, email, gender, birthday, address, terms
-                );
+               //tring output = String.format(
+                      //"Name: %s\nMobile: %s\nGender: %s\nBirthday: %s\nAddress: %s\nTerms: %s",
+                      //name, email, gender, birthday, password, terms
+             // );
 
             }
         });
@@ -331,3 +325,5 @@ public class Registration extends JFrame {
 
         }
     }
+
+//Sign in part must be configured as well. Must add verifiction codes for sign in button and the password. Double checking is needed
