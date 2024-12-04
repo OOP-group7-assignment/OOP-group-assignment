@@ -229,7 +229,7 @@ public class Registration extends JFrame {
                 if (!checkBox.isSelected()) {
                     JOptionPane.showMessageDialog(
                             null,
-                            "You must accept the terms and conditions to proceed.",
+                            "Confirm You are not a Robot",
                             "Terms Not Accepted",
                             JOptionPane.ERROR_MESSAGE
                     );
